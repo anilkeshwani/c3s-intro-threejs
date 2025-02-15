@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    /* background: linear-gradient(#fee440, #ff006e); */
+    /* background:  #e9fffd; */
+    /* background: #000; */
+    /* background:#ff006e; */
+  }
+
+
+.dotted-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    mix-blend-mode: screen;
+    --circle_w: 2px;
+    --m_bet_circle: 3px;
+    --circle_color: #737b8771;
+    --bg_color: transparent;
+    --A: calc(var(--circle_w) + var(--m_bet_circle));
+    --B: calc(var(--circle_w) / 2);
+    background: 0 0/var(--A) var(--A) radial-gradient(circle at center, var(--circle_color) var(--B), var(--bg_color) var(--B)), center/cover no-repeat;
+}
+  
