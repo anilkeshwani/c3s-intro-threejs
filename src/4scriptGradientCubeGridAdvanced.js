@@ -68,7 +68,7 @@ function createGradientTexture(mainColour = "#ff006e", stops = [0, 0.6, 1]) {
 //////////////////////////////////////////
 
 // Geometry - will reuse the same one everywhere
-const geometry = new THREE.BoxGeometry(1, 7, 1);
+const geometry = new THREE.CylinderGeometry(0.5, 0.5, 7, 32);
 
 // Base material - used for non-gradient sides of the cube
 const baseMaterial = new THREE.MeshBasicMaterial({ color: baseCol });
@@ -218,7 +218,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 //////////////////////////////////////////
 const clock = new THREE.Clock();
 
-const noiseScale = 1;
+const noiseScale = 3;
 const tick = () => {
     const elapsedTime = clock.getElapsedTime();
 
@@ -232,7 +232,7 @@ const tick = () => {
             z * noiseScale + elapsedTime * animationSpeed
         );
         // Map noise value to scale range
-        const scaleY = THREE.MathUtils.mapLinear(noiseValue, -1, 1, 1, 4);
+        const scaleY = THREE.MathUtils.mapLinear(noiseValue, -1, 1, 1, 8);
         mesh.scale.y = scaleY;
         mesh.position.y = (scaleY - 1) / 2; // Keep bottom at the same level
     });
