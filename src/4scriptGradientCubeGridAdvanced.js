@@ -214,6 +214,13 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+// Add zoom control
+window.addEventListener('wheel', (event) => {
+    camera.zoom += event.deltaY * -0.01;
+    camera.zoom = Math.max(Math.min(camera.zoom, 10), 0.1); // Limit zoom level
+    camera.updateProjectionMatrix();
+});
+
 //////////////////////////////////////////
 /////////////// Animate //////////////////
 //////////////////////////////////////////
