@@ -65,7 +65,7 @@ function createGradientTexture() {
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 // Base material - used for non-gradient sides of the cube
-const baseMaterial = new THREE.MeshBasicMaterial({ color: "0xffffff" });
+const baseMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
 // Gradient material - used for the gradient sides of the cube
 const gradientTexture = createGradientTexture();

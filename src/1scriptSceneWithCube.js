@@ -1,4 +1,4 @@
-// Losely based on the Three.js Journey course, especially Lesson 14
+// Loosely based on the Three.js Journey course, especially Lesson 14
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
