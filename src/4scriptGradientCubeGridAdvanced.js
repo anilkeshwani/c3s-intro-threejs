@@ -76,8 +76,8 @@ const baseMaterial = new THREE.MeshBasicMaterial({ color: baseCol });
 // Create and add all the meshes in a grid
 const meshes = [];
 const group = new THREE.Group();
-let cols = 45;
-let rows = 40;
+let cols = 15;
+let rows = 10;
 let spacing = 1; // How much space between all the cubes in the grid
 //const colourOptions = ["#ffe66d", "#ff6b6b", "#4ecdc4", "#1a535c", "#f7fff7"];
 const colourOptions = _.sample(colourSchemes);
