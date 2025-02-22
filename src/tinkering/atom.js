@@ -50,18 +50,31 @@ const material = new THREE.MeshStandardMaterial({
     metalness: 0.2,
     roughness: 0.1,
 });
+const material2 = new THREE.MeshStandardMaterial({
+    color: 0x0000FF, // blue color
+    metalness: 0.2,
+    roughness: 0.1,
+});
+const material3 = new THREE.MeshStandardMaterial({
+    color: 0xFFFF00, // yellow color
+    metalness: 0.2,
+    roughness: 0.1,
+});
 
 // Geometries
 const geometrySphere = new THREE.SphereGeometry(0.5, 32, 32);
-const geometrySphere2 = new THREE.SphereGeometry(0.3, 32, 32); // smaller size
+const geometrySphere2 = new THREE.SphereGeometry(0.3, 32, 32);
 
 // Meshes
 const centralBody = new THREE.Mesh(geometrySphere, material);
-const orbitingBody1 = new THREE.Mesh(geometrySphere2, material); // smaller size
-const orbitingBody2 = new THREE.Mesh(geometrySphere2, material); // smaller size
-centralBody.position.x = 0.0;
+const orbitingBody1 = new THREE.Mesh(geometrySphere2, material);
+const orbitingBody2 = new THREE.Mesh(geometrySphere2, material2);
+const orbitingBody3 = new THREE.Mesh(geometrySphere2, material3);
 
-scene.add(centralBody, orbitingBody1, orbitingBody2);
+centralBody.position.x = 0.0;
+centralBody.position.y = 0.0;
+
+scene.add(centralBody, orbitingBody1, orbitingBody2, orbitingBody3);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
@@ -105,8 +118,26 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime();
 
     // Update objects
-    orbitingBody1.position.x = Math.cos(elapsedTime);
+    orbitingBody1.position.x = Math.cos(elapsedTime * 2);
     orbitingBody1.position.y = Math.sin(elapsedTime);
+    orbitingBody1.position.z = Math.sin(elapsedTime);
+
+    orbitingBody2.position.x = Math.sin(elapsedTime);
+    orbitingBody2.position.y = Math.cos(elapsedTime);
+    orbitingBody2.position.z = Math.sin(elapsedTime);
+
+    orbitingBody3.position.x = Math.sin(elapsedTime);
+    orbitingBody3.position.y = Math.cos(elapsedTime);
+    orbitingBody3.position.z = Math.cos(elapsedTime);
+
+    // Change colors based on time
+    const color1 = new THREE.Color(`hsl(${(elapsedTime * 40) % 360}, 100%, 50%)`);
+    const color2 = new THREE.Color(`hsl(${(elapsedTime * 60) % 360}, 100%, 50%)`);
+    const color3 = new THREE.Color(`hsl(${(elapsedTime * 80) % 360}, 100%, 50%)`);
+
+    orbitingBody1.material.color = color1;
+    orbitingBody2.material.color = color2;
+    orbitingBody3.material.color = color3;
 
     // Update controls
     controls.update();
